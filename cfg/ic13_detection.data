@@ -1,0 +1,5 @@
+train  = /media/amafla/ssd/pytorch-yolo2-master/text_detection/train.txt
+valid  = /media/amafla/ssd/pytorch-yolo2-master/text_detection/validation.txt
+names = data/detection.names
+backup = backup
+gpus  = 0

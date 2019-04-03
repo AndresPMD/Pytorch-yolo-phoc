@@ -1,0 +1,6 @@
+train  = /SSD/pytorch-yolo2-master/text_detection/distributed_synth_icdar.txt
+valid  = /SSD/pytorch-yolo2-master/text_detection/distributed_synth_icdar.txt
+names = data/recognition.names
+backup = backup
+gpus  = 0
+num_workers = 10

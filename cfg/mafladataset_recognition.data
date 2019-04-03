@@ -1,0 +1,6 @@
+train  = /media/amafla/ssd/pytorch-yolo2-master/text_detection/maflacolorfull_train.txt
+valid  = /media/amafla/ssd/pytorch-yolo2-master/text_detection/maflacolorfull_validation.txt
+names = data/1k_english_common_words.names
+backup = backup
+gpus  = 0
+num_workers = 10

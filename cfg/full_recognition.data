@@ -1,0 +1,6 @@
+train  = /media/amafla/ssd/pytorch-yolo2-master/text_detection/synth_train.txt
+valid  = /media/amafla/ssd/pytorch-yolo2-master/text_detection/synth_validation.txt
+names = data/recognition.names
+backup = backup
+gpus  = 0
+num_workers = 10

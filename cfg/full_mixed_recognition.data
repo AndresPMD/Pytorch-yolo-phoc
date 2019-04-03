@@ -1,0 +1,6 @@
+train  = /media/amafla/ssd/pytorch-yolo2-master/text_detection/synth_train_plus_ICDAR.txt
+valid  = /media/amafla/ssd/pytorch-yolo2-master/text_detection/synth_validation_plus_ICDAR.txt
+names = data/recognition.names
+backup = backup
+gpus  = 0
+num_workers = 10
