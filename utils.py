@@ -462,9 +462,33 @@ def write_retrieval (img, boxes, savename=None, class_names=None):
             #print('%s: %f' % (text_found, cls_conf))
 
     result_file.close()
-
     return result_file
 
+def write_retrieval_json (img, boxes, savename=None, class_names=None):
+
+    width = img.width
+    height = img.height
+    phocs_per_image = []
+    for i in range(len(boxes)):
+        box = boxes[i]
+        x1 = (box[0] - box[2]/2.0) * width
+        y1 = (box[1] - box[3]/2.0) * height
+        x2 = (box[0] + box[2]/2.0) * width
+        y2 = (box[1] + box[3]/2.0) * height
+
+        if len(box) >= 6 and class_names:
+            cls_conf = box[4]
+            cls_id = box[5]
+            np.set_printoptions(suppress=True)
+            phoc_retrieved = (cls_id.unsqueeze(0).numpy())
+            phoc_retrieved = phoc_retrieved.tolist()
+            phocs_per_image.append(phoc_retrieved)
+
+    if savename:
+        with open(savename[:-4] + '.json', 'w') as f:
+            json.dump(phocs_per_image,f)
+
+    return
 
 def move_image(img_full_path, processed_path):
 
