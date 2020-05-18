@@ -34,19 +34,9 @@ def detect(cfgfile, weightfile, imgfolder, destination_folder):
         sized = img.resize((m.width, m.height))
 
         # Paper -> conf_t = 0.0025 and no NMS
-        #conf_threshold = 0.0025
-        #nms_threshold = 0.0013
-
         conf_threshold = 0.005
         nms_threshold = 0
 
-        # MOST OF EXPERIMENTS:
-        #conf_threshold = 0.025
-        #nms_threshold = 0.05
-
-        # ORIGINAL?
-        # conf_threshold = 0.1
-        # nms_threshold = 0.2
         for i in range(1):
             start = time.time()
             # boxes = do_detect(m, sized, conf_threshold, nms_threshold, use_cuda)
@@ -56,58 +46,23 @@ def detect(cfgfile, weightfile, imgfolder, destination_folder):
 
             if i == 1:
                 print('%s: Predicted in %f seconds.' % (imgfile, (finish-start)))
-
-        # result_image_path = '/SSD/pytorch-yolo2-master/results/iiit_results/' + imgfile
-        # result_image_path = '/SSD/pytorch-yolo2-master/results/sports10k/' + imgfile
-        # result_image_path = '/SSD/pytorch-yolo2-master/results/svt1/' + imgfile
-
-        # FINE GRAINED CLASSIFICATION
+   
         result_image_path = destination_folder + imgfile
 
-        write_retrieval(img, boxes, result_image_path, class_names)
-        #processed_path = '/home/amafla/Documents/Product_Dataset/processed_images/'
-        #move_image(img_full_path, processed_path)
-
-        # PHOC RESULTS FROM TRAINING DATA
-        #result_image_path = '/SSD/LG_modified_synth/yolo_phoc_results/synth/' + imgfile
-
-
-        # ONLY FOR DRINK BOTTLE DATASET
-        # result_image_path = destination_folder+imgfile
-
-        # plot_boxes(img, boxes, words, neigh, result_image_path, class_names)
-        # write_retrieval(img, boxes, result_image_path, class_names)
+        write_retrieval_json(img, boxes, result_image_path, class_names)
 
 
 if __name__ == '__main__':
 
 
-    #imgfolder = '/SSD/Datasets/IIIT_STR_V1.0/imgDatabase/'
-    #imgfolder = '/SSD/Datasets/sports10K/imgDatabase/'
-    #imgfolder = '/SSD/Datasets/svt1/img/'
-    #imgfolder = '/home/amafla/Documents/Datasets/IC13/test/'
-
-    # FINE GRAINED CLASSIFICATION
+    # EX PROCESSING TO EXTRACT PHOCS
     imgfolder = '/SSD/VQA/TestRepository/VisualGenome/2/'
     destination_folder = '/SSD/VQA/TestRepository/Results_Raw_Phocs/VisualGenome/2/'
-    # TO OBTAIN PHOCS FROM TRAINING DATA
-
-    #imgfolder = '/SSD/LG_modified_synth/SynthText_90KDict/images/'
 
     cfgfile = 'cfg/yolo-recognition-13anchors.cfg'
     weightfile = 'backup/000041.weights'
 
     detect(cfgfile, weightfile, imgfolder, destination_folder)
-
-    '''For Bottle Dataset
-    for i in range(1, 21):
-        imgfolder = '/SSD/Datasets/drink_dataset/images/' + str(i) + '/'
-        destination_folder = '/home/amafla/yolophoc_bottles/' + str(i) + '/'
-        if not os.path.exists(destination_folder):
-            os.mkdir(destination_folder)
-        detect(cfgfile, weightfile, imgfolder, destination_folder)
-
-    '''
 
     print ("OPERATION COMPLETE..!!")
 
