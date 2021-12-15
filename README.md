@@ -38,5 +38,5 @@ The model has been trained, achieving the following results:
  - IIIT Sports-10k dataset: 72.73
  - Street View Text (SVT) dataset: 83.14
 
-The weights can be downloaded from: https://drive.google.com/open?id=1N3-aDEBf7Zo1gcGndP1ZXt-g08JIB9cR
+The weights can be downloaded from: https://drive.google.com/file/d/1nmlzLJNPvI4Mw2bB6t-1N29tBz9kLb4t/view?usp=sharing
 
